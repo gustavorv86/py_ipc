@@ -23,3 +23,25 @@ Run examples
 ------------
 
 Execute the **start.sh** scripts into the folders.
+
+Command and Utilities
+---------------------
+
+Show SysV IPC information
+
+`ipcs -a`
+
+Remove SysV IPC
+
+`ipcrm -[M|S|Q] [key]`
+
+Show POSIX IPC devices
+
+```
+ls -al /dev/shm
+ls -al /dev/mqueue
+```
+
+Dump POSIX IPC information
+
+`hexdump -Cv /dev/shm/<MY_KEY>`
