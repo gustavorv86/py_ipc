@@ -17,7 +17,7 @@ Install python **posix_ipc** and **sysv_ipc**  modules.
 
 Clone this repository.
 
-`git clone https://github.com/gustavorv86/pyIPC`
+`git clone https://github.com/gustavorv86/py_ipc`
 
 Run examples
 ------------
@@ -45,3 +45,4 @@ ls -al /dev/mqueue
 Dump POSIX IPC information
 
 `hexdump -Cv /dev/shm/<MY_KEY>`
+

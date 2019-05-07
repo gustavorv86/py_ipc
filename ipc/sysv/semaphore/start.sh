@@ -4,19 +4,19 @@ echo
 echo 'Press INTRO to cancel'
 echo
 
-./pySemaphore2.py &
-pySemaphore1_PID=$!
+./py_semaphore_2.py &
+py_semaphore_1_PID=$!
 
 sleep 3
 
-./pySemaphore1.py &
-pySemaphore2_PID=$!
+./py_semaphore_1.py &
+py_semaphore_2_PID=$!
 
 ## Wait to press INTRO
 read
 
-kill -SIGUSR1 ${pySemaphore1_PID}
-kill -SIGUSR1 ${pySemaphore2_PID}
+kill -SIGUSR1 ${py_semaphore_1_PID}
+kill -SIGUSR1 ${py_semaphore_2_PID}
 
 sleep 1
 

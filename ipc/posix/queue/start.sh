@@ -4,19 +4,19 @@ echo
 echo 'Press INTRO to exit...'
 echo
 
-./pyQueueRead.py &
-pyQueueRead_PID=$!
+./py_queue_read.py &
+py_queue_read_PID=$!
 
 sleep 2
 
-./pyQueueWrite.py &
-pyQueueWrite_PID=$!
+./py_queue_write.py &
+py_queue_write_PID=$!
 
 ## Wait INTRO
 read
 
-kill -SIGUSR1 $pyQueueRead_PID
-kill -SIGUSR1 $pyQueueWrite_PID
+kill -SIGUSR1 $py_queue_read_PID
+kill -SIGUSR1 $py_queue_write_PID
 
 sleep 1
 echo 'Done'

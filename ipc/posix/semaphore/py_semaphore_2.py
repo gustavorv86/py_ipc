@@ -15,7 +15,7 @@ def signal_handler(signum, frame):
 	global semaphore
 	print('File ', __file__, ': Signal handler called with signal', signum)
 	if semaphore:
-		semaphore.unlink()
+		semaphore.close()
 	sys.exit(0)
 
 
@@ -26,7 +26,14 @@ def main():
 	signal.signal(signal.SIGINT, signal_handler)
 	signal.signal(signal.SIGUSR1, signal_handler)
 
-	semaphore = posix_ipc.Semaphore(SEM_KEY, posix_ipc.O_CREX, initial_value=1)
+	semaphore = None
+	while not semaphore:
+		try:
+			semaphore = posix_ipc.Semaphore(SEM_KEY)
+		except posix_ipc.ExistentialError:
+			print('Semaphore is not initialized, wait...')
+			semaphore = None
+			time.sleep(1)
 
 	while True:
 		semaphore.acquire()
@@ -40,6 +47,7 @@ def main():
 		semaphore.release()
 		print('Unock ', __file__, '...')
 		print()
+		time.sleep(1)
 
 
 if __name__ == '__main__':
