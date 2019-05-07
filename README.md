@@ -1,5 +1,5 @@
-pyIPC
-=====
+py_ipc
+======
 
 Inter-Process Communication examples (Semaphores, Shared Memory and Queues) with SysV and POSIX
 
